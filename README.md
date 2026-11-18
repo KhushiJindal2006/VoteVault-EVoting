@@ -1,22 +1,140 @@
-Project Goal
+# VoteVault 🗳️
 
-The organization requires an E-Voting System to conduct online elections. The system should allow users to create elections, cast votes, and monitor election results. The application will be built using Spring Boot, Hibernate, JPA, Spring Security and MySQL for the database. It should include CRUD operations to manage elections, election candidates, and votes. It should also include Authentication and Authorisation for users. 
+**VoteVault** is a secure online voting system backend built using Spring Boot, Java, MySQL, JWT Authentication, and Spring Security. It provides REST APIs for user authentication, role-based access control, election management, candidate voting, and election results.
 
-Features of the Application:
+## 🚀 Features
 
-    • User registration and login functionality with password hashing for enhanced security.
-    • JWT token generation upon successful authentication, allowing users to access protected 
-      resources without the need for session cookies
-    • Implementation of role-based access control (RBAC) to enforce authorization policies based 
-      on user roles and permissions.
-    • Administrators can create new elections, specify the list of candidates for each election, set 
-      voting periods, and monitor voting progress in real-time.
-    • Voters can cast votes for a specific election and candidate within the start  
-      and end date of election
-    • Results generation with count of votes for each candidate participating in the election.
-    • Comprehensive error handling and logging mechanisms to ensure system reliability and 
-      traceability.
+- User registration and login
+- JWT-based authentication
+- Spring Security integration
+- Role-based authorization
+- Admin election management
+- Election listing and details
+- Candidate voting functionality
+- Election results API
+- Password encryption using BCrypt
+- MySQL database integration
+- RESTful API architecture
 
-Flowchart:
+## 🛠️ Tech Stack
 
-![image](https://github.com/Vishesh-Jindal/EVotingSytem/assets/84375861/e9e44bb8-ce20-4af9-ba83-7cb21d3a4d9e)
+| Technology | Purpose |
+|---|---|
+| Java 17 | Backend programming |
+| Spring Boot | Application framework |
+| Spring Security | Authentication & authorization |
+| JWT | Token-based authentication |
+| Spring Data JPA | Database operations |
+| Hibernate | ORM |
+| MySQL 8 | Database |
+| Maven | Build management |
+
+## 📁 Project Structure
+
+```text
+VoteVault/
+├── src/
+│   └── main/
+│       ├── java/com/example/eVoting/
+│       │   ├── controllers/
+│       │   ├── config/
+│       │   ├── entities/
+│       │   ├── repositories/
+│       │   └── services/
+│       └── resources/
+│            └── application.yml
+├── pom.xml
+├── mvnw
+└── README.md
+```
+
+## ⚙️ Setup & Installation
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/KhushiJindal2006/VoteVault.git
+cd VoteVault
+```
+
+### 2. Prerequisites
+
+- Java 17
+- MySQL 8
+- Git
+
+### 3. Configure MySQL
+
+Make sure MySQL is running locally.
+
+The application uses the `evoting` database and connects through the configuration in `application.yml`.
+
+Set your database password as an environment variable:
+
+**Windows PowerShell:**
+
+```powershell
+$env:DB_PASSWORD = "your_mysql_password"
+```
+
+Replace `your_mysql_password` with your local MySQL password.
+
+### 4. Run the application
+
+```powershell
+.\mvnw.cmd spring-boot:run
+```
+
+The backend server will start at:
+
+```text
+http://localhost:8080
+```
+
+## 🔗 API Endpoints
+
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/user/register` | Register a new user |
+| POST | `/auth/login` | Authenticate user |
+| POST | `/auth/logout/{username}` | Logout user |
+| GET | `/user/{username}` | Get user information |
+| GET | `/user/{username}/roles` | Get user roles |
+| GET | `/election/all` | Get all elections |
+| GET | `/election/{electionId}` | Get election details |
+| GET | `/election/{electionId}/results` | Get election results |
+| POST | `/admin/add/election` | Create election |
+| PUT | `/admin/grant/roles/{username}` | Grant roles |
+| PUT | `/admin/revoke/roles/{username}` | Revoke roles |
+| POST | `/user/{username}/election/{electionId}/candidate/{candidateId}` | Cast vote |
+
+## 🔐 Security
+
+- JWT-based authentication
+- BCrypt password hashing
+- Role-based authorization
+- Protected REST endpoints
+- Stateless session management
+
+## 🧪 Testing
+
+APIs can be tested using tools such as:
+
+- Postman
+- curl
+
+Authenticated endpoints require a valid JWT access token.
+
+## 📌 Project Status
+
+VoteVault is a backend-focused online voting system project developed using Spring Boot. The project demonstrates REST API development, authentication, authorization, database integration, and backend security concepts.
+
+## 👩‍💻 Author
+
+**Khushi Jindal**
+
+GitHub: [KhushiJindal2006](https://github.com/KhushiJindal2006)
+
+---
+
+⭐ If you find this project interesting, feel free to explore the repository.
